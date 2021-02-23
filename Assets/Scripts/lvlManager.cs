@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.IO;
 
 public class lvlManager : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class lvlManager : MonoBehaviour
     GameObject startCell;
     GameObject[,] allCells = new   GameObject[10,18];
 
+    string filename = "lvl.txt";
+
     void Start()
     {
         controller = FindObjectOfType<mainController>();
@@ -33,9 +36,13 @@ public class lvlManager : MonoBehaviour
 
     string[] loadLvl(int lvlNumber)
     {
-        TextAsset tempTxtAsset = Resources.Load<TextAsset>("lvl" + lvlNumber);
-        string tempStr = tempTxtAsset.text.Replace(Environment.NewLine, string.Empty);
-        return tempStr.Split(',');
+        // TextAsset tempTxtAsset = Resources.Load<TextAsset>("lvl" + lvlNumber);
+        // string tempStr = tempTxtAsset.text.Replace(Environment.NewLine, string.Empty);
+        // // Debug.Log(tempStr);
+        // return tempStr.Split(',');
+
+        string tempStr = File.ReadAllText(System.IO.Directory.GetCurrentDirectory() + "/" + filename);
+        return tempStr.Split('\n');
     }
 
     void CreateLvl()
@@ -53,7 +60,11 @@ public class lvlManager : MonoBehaviour
                 }
                 else
                 {
-                    CreateCell(j, i, worldVec, tillSprite[0], false);
+                    if(ch == '1' || ch == '2' || ch =='3' || ch == '4' || ch == '5' || ch == '6' 
+                    || ch == '7' || ch == '8' || ch == '9' || ch == '0')
+                    {
+                        CreateCell(j, i, worldVec, tillSprite[0], false);
+                    }
 
                     if(ch == '2')
                     {

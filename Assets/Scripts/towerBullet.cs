@@ -6,6 +6,7 @@ public class towerBullet : MonoBehaviour
 {
     public Transform target;
     public TowerBullet selfBullet;
+    enemy tempEnemy;
     
     public void SetTarget(Transform targetObject)
     {
@@ -18,7 +19,7 @@ public class towerBullet : MonoBehaviour
         {
             if(Vector2.Distance(transform.position, target.position) < .1f)
             {
-                target.GetComponent<enemy>().TakeDemage(selfBullet.demage);
+                tempEnemy.TakeDemage(selfBullet.demage);
                 Destroy(gameObject);
             }
             else
@@ -36,6 +37,7 @@ public class towerBullet : MonoBehaviour
     void Start()
     {
         GetComponent<SpriteRenderer>().sprite = selfBullet.spriteBullet;
+        tempEnemy = target.GetComponent<enemy>();
     }
 
     void Update()

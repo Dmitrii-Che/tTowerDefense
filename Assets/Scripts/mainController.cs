@@ -86,13 +86,17 @@ public class mainController : MonoBehaviour
         restartPanel = GameObject.Find("PanelRestart");
         restartPanel.SetActive(false);
 
-        towers.Add(new Tower(3, 5f, "Towers/twr01", 0, 10));
-        towers.Add(new Tower(5, 1f, "Towers/twr011", 1, 20));
-        towers.Add(new Tower(10, 0.01f, "Towers/twr012", 2, 30));
+        towers.Add(new Tower(0, 0f, "Towers/twr00", 0, 5));
+        towers.Add(new Tower(3, 1f, "Towers/twr01", 1, 10));
+        towers.Add(new Tower(3, 0.5f, "Towers/twr011", 2, 30));
+        towers.Add(new Tower(5, 0.5f, "Towers/twr012", 3, 50));
+        towers.Add(new Tower(10, 0.01f, "Towers/twr21", 3, 80));
 
-        bullets.Add(new TowerBullet(10,10,"Bullets/ydr0"));
-        bullets.Add(new TowerBullet(10,15,"Bullets/ydr1"));
-        bullets.Add(new TowerBullet(20,10,"Bullets/ydr0"));
+        bullets.Add(new TowerBullet(0,0,"Bullets/ydr0"));
+        bullets.Add(new TowerBullet(10,20,"Bullets/ydr0"));
+        bullets.Add(new TowerBullet(10,20,"Bullets/ydr0"));
+        bullets.Add(new TowerBullet(20,30,"Bullets/ydr1"));
+        bullets.Add(new TowerBullet(20,30,"Bullets/ydr1"));
 
         enemies.Add(new Enemy(30, 1, 4, 5 ));
     }

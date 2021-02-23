@@ -13,6 +13,7 @@ public class tower : MonoBehaviour
     public Color baseColor, actColor;
     public GameObject updatePref;
     bool canUpdate = false, isGameOn;
+    SpriteRenderer TowerSpriteRenderer;
 
     void Update()
     {
@@ -30,13 +31,13 @@ public class tower : MonoBehaviour
 
     void OnMouseEnter()
     {
-        GetComponent<SpriteRenderer>().color = actColor;
+        TowerSpriteRenderer.color = actColor;
         makeUpdateTowerPanel();
     }
 
     void OnMouseExit()
     {
-        GetComponent<SpriteRenderer>().color = baseColor;
+        TowerSpriteRenderer.color = baseColor;
         Destroy(UpdateTowerPanel);
     }
 
@@ -64,7 +65,8 @@ public class tower : MonoBehaviour
 
     void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = selfTower.spriteTower;
+        TowerSpriteRenderer = GetComponent<SpriteRenderer>();
+        TowerSpriteRenderer.sprite = selfTower.spriteTower;
 
         controller = FindObjectOfType<mainController>();
         rank = selfTower.rank;
@@ -83,7 +85,7 @@ public class tower : MonoBehaviour
         {
            rank++;
            selfTower = new Tower(controller.towers[rank]);
-           GetComponent<SpriteRenderer>().sprite = selfTower.spriteTower;          
+           TowerSpriteRenderer.sprite = selfTower.spriteTower;          
         }
     }
 

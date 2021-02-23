@@ -33,13 +33,13 @@ public class enemySpawner : MonoBehaviour
     int loadTimeToSpawn()
     {
         string tempStr = File.ReadAllText(System.IO.Directory.GetCurrentDirectory() + "/" + filename);
-        Debug.Log("tempStr: " + tempStr);
+        // Debug.Log("tempStr: " + tempStr);
         return Int32.Parse(tempStr);
     }
 
     void Update()
     {
-        isGameOn = FindObjectOfType<mainController>().isGameOn;
+        isGameOn = controller.isGameOn;
         if(isGameOn)
         {
             if(timeToSpawn <= 0)
